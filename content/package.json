@@ -4,7 +4,7 @@
   "description": "Content Service to serve content(books)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node-dev src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,18 @@
   "bugs": {
     "url": "https://github.com/KabirSinghShekhawat/backend-task/issues"
   },
-  "homepage": "https://github.com/KabirSinghShekhawat/backend-task#readme"
+  "homepage": "https://github.com/KabirSinghShekhawat/backend-task#readme",
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "@uni-cron/pratilipi-common": "^2.1.1",
+    "express": "^4.17.2",
+    "express-async-errors": "^3.1.1",
+    "express-validator": "^6.14.0",
+    "http-status-codes": "^2.2.0",
+    "mongoose": "^6.1.7",
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.1.8"
+  }
 }
