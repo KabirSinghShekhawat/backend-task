@@ -6,7 +6,7 @@ interface ContentAttrs {
     story: string;
     date_published: Date;
     user: string;
-    interactions: {
+    interactions?: {
         reads: number;
         likes: number;
     }
@@ -22,7 +22,7 @@ interface ContentDoc extends mongoose.Document {
     story: string;
     date_published: Date;
     user: string;
-    interactions: {
+    interactions?: {
         reads: number;
         likes: number;
     }
@@ -45,8 +45,8 @@ const contentSchema = new mongoose.Schema(
         },
         date_published: {
             type: Date,
-            required: true,
-            default: Date.now()
+            default: Date.now(),
+            required: true
         },
         user: {
             type: String,
@@ -74,4 +74,4 @@ contentSchema.statics.build = (attrs: ContentAttrs) => {
 
 const Content = mongoose.model<ContentDoc, ContentModel>('Content', contentSchema);
 
-export default Content;
+export {Content, ContentDoc};

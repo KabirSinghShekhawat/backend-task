@@ -1,4 +1,4 @@
-import Content from "../models/content";
+import {Content} from "../models/content";
 import * as CRUD_Service from "../services/CRUD.service";
 
 const filter = [

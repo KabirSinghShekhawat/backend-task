@@ -6,6 +6,7 @@ import * as contentController from "../controllers/content.controller";
 
 router
     .route("/")
+    .get(contentController.getAllContent)
     .post(contentController.createContent);
 
 
@@ -14,5 +15,6 @@ router
     .get(contentController.getContent)
     .patch(contentController.editContent)
     .delete(contentController.deleteContent);
+
 
 export { router as contentRouter };
