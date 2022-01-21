@@ -1,0 +1,23 @@
+{
+  "name": "content-srv",
+  "version": "1.0.0",
+  "description": "Content Service to serve content(books)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KabirSinghShekhawat/backend-task.git"
+  },
+  "keywords": [
+    "Content",
+    "Service"
+  ],
+  "author": "Kabir Singh Shekhawat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KabirSinghShekhawat/backend-task/issues"
+  },
+  "homepage": "https://github.com/KabirSinghShekhawat/backend-task#readme"
+}
