@@ -14,9 +14,9 @@ const CheckDocumentExists = async (Model: any, id: string, field: string) => {
 }
 
 const getInteractions = async (req: Request, res: Response) => {
-    const { content: contentId } = req.body;
+    const contentId = req.query.content as string;
 
-    const content = CheckDocumentExists(Interaction, contentId, 'content');
+    const content = await CheckDocumentExists(Interaction, contentId, 'content');
 
     res
         .status(StatusCodes.OK)
