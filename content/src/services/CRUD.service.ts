@@ -77,10 +77,24 @@ const getMany = (Model: mongoose.Model<any>) => async (
     res: Response
 ) => {
     let query = Model.find({})
-    if (req.query?.select) query = query.select(req.query.select)
+
+    if (!req.query) {
+        const results = await query
+        return res
+            .status(StatusCodes.OK)
+            .json(createResponse(results, StatusCodes.OK));
+    }
+
+    if (req.query.sortBy && req.query.sortOrder) {
+        query = query.sort({
+            [(req.query.sortBy as string)]: req.query.sortOrder
+        })
+    }
+        
+    if (req.query.select) query = query.select(req.query.select)
 
     const { populate, selectPop } = req.query;
-    const limit = parseInt(req.query?.limit as string);
+    const limit = parseInt(req.query.limit as string);
 
     if (populate && selectPop) query = query.populate(populate, selectPop)
 

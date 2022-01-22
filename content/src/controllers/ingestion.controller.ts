@@ -1,9 +1,6 @@
 import { Request, Response } from "express";
 import { parse } from "csv-parse";
-import {
-    StatusCodes,
-    ReasonPhrases
-} from "http-status-codes";
+import { StatusCodes } from "http-status-codes";
 
 import { BadRequestError, createResponse } from "@uni-cron/pratilipi-common";
 import { Content, ContentDoc } from "../models/content";

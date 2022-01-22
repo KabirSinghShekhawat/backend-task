@@ -9,6 +9,13 @@ router
     .get(contentController.getAllContent)
     .post(contentController.createContent);
 
+router
+    .route("/new")
+    .get(contentController.getAllContent);
+
+router
+    .route("/top")
+    .get(contentController.getTopContent);
 
 router
     .route("/:id")
