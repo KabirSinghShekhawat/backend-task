@@ -4,6 +4,8 @@ import { StatusCodes } from "http-status-codes";
 
 import { BadRequestError, createResponse } from "@uni-cron/pratilipi-common";
 import { Content, ContentDoc } from "../models/content";
+import axios from "axios";
+import { EventBus } from "../events";
 
 
 const uploadCSV = async (req: Request, res: Response) => {
@@ -52,6 +54,10 @@ const uploadCSV = async (req: Request, res: Response) => {
     });
 
     const result = await Content.bulkWrite(contents)
+
+    for (let id of Object.values(result.insertedIds)) {
+        await axios.post(EventBus, { type: 'PostCreated', data: { _id: id } })
+    }
 
     res
         .status(StatusCodes.CREATED)

@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
+import axios from 'axios';
 import { Request, Response } from "express";
+import { EventBus } from "../events";
 
 import {
     StatusCodes,
@@ -59,7 +61,10 @@ const createOne = (Model: mongoose.Model<any>, filter: Array<string>) => async (
 
     let query = Model.findById(patient.id)
     if (req.query?.select) query = query.select(req.query.select)
+
     const result = await query;
+
+    await axios.post(EventBus, { type: 'PostCreated', data: {_id: result._id}});
 
     res
         .status(StatusCodes.CREATED)
@@ -159,6 +164,7 @@ const deleteOne = (Model: mongoose.Model<any>) => async (
         throw new BadRequestError("Document not updated");
     }
 
+    await axios.post(EventBus, {type: 'PostDeleted', data: {_id: documentID}});
     res
         .status(StatusCodes.CREATED)
         .json(
