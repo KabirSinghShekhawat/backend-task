@@ -1,3 +1,3 @@
-const EventBus = 'http://localhost:3001/events';
+const EventBus = 'http://localhost:5000/events';
 
 export {EventBus}
