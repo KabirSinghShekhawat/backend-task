@@ -6,9 +6,12 @@ import EventService from './services/handleEvent.service';
 
 const start = async () => {
     try {
-        const MONGO_URI = 'mongodb://localhost/interaction'
+        let MONGO_URI = process.env?.MONGO_URI;
+
+        if (!MONGO_URI) MONGO_URI = 'mongodb://localhost/interaction';
+
         await mongoose.connect(MONGO_URI);
-        console.log('Connected to MongoDB');
+        console.log('Connected to MongoDB at ', MONGO_URI);
     } catch (err) {
         console.error(err);
     }

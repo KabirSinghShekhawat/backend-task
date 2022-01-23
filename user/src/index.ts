@@ -3,9 +3,12 @@ import { app } from './app';
 
 const start = async () => {
     try {
-        const MONGO_URI = 'mongodb://localhost/user'
+        let MONGO_URI = process.env?.MONGO_URI;
+
+        if (!MONGO_URI) MONGO_URI = 'mongodb://localhost/user';
+        
         await mongoose.connect(MONGO_URI);
-        console.log('Connected to MongoDB');
+        console.log('Connected to MongoDB at ', MONGO_URI);
     } catch (err) {
         console.error(err);
     }

@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: content-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: content
+  template:
+    metadata:
+      labels:
+        app: content
+    spec:
+      containers:
+        - name: content
+          image: docker19bct0189/content
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://content-mongo-srv:27017/content'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: content-srv
+spec:
+  selector:
+    app: content
+  type: ClusterIP
+  ports:
+    - name: content
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: content-node-srv
+spec:
+  type: NodePort
+  selector: 
+    app: content
+  ports:
+    - name: content
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
