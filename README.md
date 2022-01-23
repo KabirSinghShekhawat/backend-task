@@ -19,13 +19,13 @@
 ```sh
  git clone https://github.com/KabirSinghShekhawat/backend-task.git
  cd backend-task
- bash runMe.sh
+ bash runMe.sh your-docker-id
 ```
 
 ### runMe.sh takes just one argument
 
 ```sh
-bash runMe.sh docker-id
+bash runMe.sh your-docker-id
 ```
 
 
