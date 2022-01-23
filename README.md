@@ -37,7 +37,11 @@ bash runMe.sh docker-id
 ```
 
 Architecture Diagram is in an [excalidraw][3] file called [HLD_v1.excalidraw](HLD_v1.excalidraw)
-
+For testing, you need to edit your network host file and add at the very bottom (also mentioned in the diagram)
+```
+127.0.0.1 testapi.com
+```
+This is the host name defined in the ingress config file and used in Postman collections as well.
 [1]: https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
 [2]: https://www.npmjs.com/package/@uni-cron/pratilipi-common
 [3]: https://excalidraw.com/
